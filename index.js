@@ -8,7 +8,7 @@ app.use(function (req, res, next) {
     res.status(404).send("Sorry can't find that!")
 })
 
-app.get('/', (req, res) => res.send('Hello World!'))
+router.get('/profile', (req, res) => res.send('Hello World!'))
 
 app.post('/', (req, res) => res.send('Got a POST request'))
 
