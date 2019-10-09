@@ -10,14 +10,14 @@ const dummyLogin = {
     lastName: "sherman"
 }
 
-router.get('/', (req, res, next) => res.json({dummyLogin}))
+router.get('/', (req, res, next) => res.json(dummyLogin))
 
-router.get('/:id', (req, res, next) => res.json({dummyLogin}))
+router.get('/:id', (req, res, next) => res.json(dummyLogin))
 
-router.post('/', (req, res,next) => res.json({dummyLogin}))
+router.post('/', (req, res,next) => res.json(dummyLogin))
 
-router.put('/:id', (req, res, next) => res.json({dummyLogin}))
+router.put('/:id', (req, res, next) => res.json(dummyLogin))
 
-router.delete('/:id', (req, res, next) => res.json({dummyLogin}))
+router.delete('/:id', (req, res, next) => res.json(dummyLogin))
 
 module.exports = router;

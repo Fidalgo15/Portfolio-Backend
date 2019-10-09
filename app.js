@@ -9,6 +9,10 @@ let  usersRouter = require('./routes/users');
 let loginRouter = require('./routes/Login');
 let workRouter = require('./routes/WorkExperiences');
 let skillsRouter = require('./routes/Skills');
+let educationRouter = require('./routes/Education');
+let projectsRouter = require('./routes/Projects');
+let referencesRouter = require('./routes/References');
+let catalogRouter = require('./routes/KnowledgeCatalog');
 
 let  app = express();
 
@@ -27,6 +31,10 @@ app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/work', workRouter);
 app.use('/skills', skillsRouter);
+app.use('/education', educationRouter)
+app.use('/projects', projectsRouter)
+app.use('/references', referencesRouter)
+app.use('/catalog', catalogRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

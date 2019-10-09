@@ -10,14 +10,14 @@ const dummyWE = {
     endDate: "present"
 }
 
-router.get('/', (req, res, next) => res.json({dummyWE}))
+router.get('/', (req, res, next) => res.json(dummyWE))
 
-router.get('/:id', (req, res, next) => res.json({dummyWE}))
+router.get('/:id', (req, res, next) => res.json(dummyWE))
 
-router.post('/', (req, res,next) => res.json({dummyWE}))
+router.post('/', (req, res,next) => res.json(dummyWE))
 
-router.put('/:id', (req, res, next) => res.json({dummyWE}))
+router.put('/:id', (req, res, next) => res.json(dummyWE))
 
-router.delete('/:id', (req, res, next) => res.json({dummyWE}))
+router.delete('/:id', (req, res, next) => res.json(dummyWE))
 
 module.exports = router;
