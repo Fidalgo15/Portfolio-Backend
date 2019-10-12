@@ -1,11 +1,25 @@
-let  createError = require('http-errors');
-let  express = require('express');
-let  path = require('path');
-let  cookieParser = require('cookie-parser');
-let  logger = require('morgan');
+require('dotenv').config();
+let createError = require('http-errors');
+let express = require('express');
+let path = require('path');
+let cookieParser = require('cookie-parser');
+let logger = require('morgan');
+const mongoose = require('mongoose');
+const config = require('./config/config')
 
-let  indexRouter = require('./routes/index');
-let  usersRouter = require('./routes/users');
+//Database Setup
+const connection_string = config.database.buildConnectionString();
+mongoose.connect(connection_string)
+  .then(() => {
+    console.log('Database connection successful.')
+  })
+  .catch((error) => {
+    console.log('An error occurred connecting to the database', error)
+  })
+
+  //Middleware imports
+let indexRouter = require('./routes/index');
+let usersRouter = require('./routes/users');
 let loginRouter = require('./routes/Login');
 let workRouter = require('./routes/WorkExperiences');
 let skillsRouter = require('./routes/Skills');
@@ -14,7 +28,8 @@ let projectsRouter = require('./routes/Projects');
 let referencesRouter = require('./routes/References');
 let catalogRouter = require('./routes/KnowledgeCatalog');
 
-let  app = express();
+//Server Setup
+let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,6 +41,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//Middleware
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);

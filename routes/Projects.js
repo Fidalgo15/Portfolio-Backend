@@ -1,5 +1,6 @@
-let  express = require('express');
-let  router = express.Router();
+let express = require('express');
+let router = express.Router();
+const Project = require('../models/project');
 
 const dummyProject = {
     _id: "123",
@@ -8,7 +9,14 @@ const dummyProject = {
     screenshot: "picture of running project",
 }
 
-router.get('/', (req, res, next) => res.json(dummyProject))
+router.get('/', (req, res, next) => {
+    Project.find({}, function(err, data){
+        if(err){
+            return res.json({error:"invalid", message: "didn't receive data."})
+        }
+        res.json(data);
+    });
+});
 
 router.get('/:id', (req, res, next) => res.json(dummyProject))
 
