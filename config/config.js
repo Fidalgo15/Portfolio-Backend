@@ -1,8 +1,8 @@
 const database = {
-    paginator: {
-        limit: 10,
-        page: 1
-    },
+    // paginator: {
+    //     limit: 10,
+    //     page: 1
+    // },
     //process is a node global variable that can be called down like a satelite.
     base_url: process.env.MONGODB_CONNECTION_STRING,
     host: process.env.MONGODB_HOST,

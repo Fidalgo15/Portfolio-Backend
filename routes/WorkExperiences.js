@@ -20,7 +20,7 @@ router.get('/:id', (req, res, next) => {
     });
 });
 
-router.post('/', (req, res,next) => {
+router.post('/', (req, res, next) => {
     Work.create(req.body, function(err, data){
         if(err){
             return res.json({error: "500", message: "couldn't create."})

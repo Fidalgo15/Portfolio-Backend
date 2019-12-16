@@ -1,10 +1,10 @@
-require('dotenv').config();
 let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 const mongoose = require('mongoose');
+require('dotenv').config();
 const config = require('./config/config')
 
 //Database Setup
@@ -15,7 +15,7 @@ mongoose.connect(connection_string)
   })
   .catch((error) => {
     console.log('An error occurred connecting to the database', error)
-  })
+  });
 
   //Middleware imports
 let indexRouter = require('./routes/index');
@@ -26,23 +26,23 @@ let skillsRouter = require('./routes/Skills');
 let educationRouter = require('./routes/Education');
 let projectsRouter = require('./routes/Projects');
 let referencesRouter = require('./routes/References');
-let catalogRouter = require('./routes/KnowledgeCatalog');
+let cors = require('cors');
 
 //Server Setup
 let app = express();
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+//Middleware is all of the .use
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-//Middleware
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
@@ -51,7 +51,6 @@ app.use('/skills', skillsRouter);
 app.use('/education', educationRouter)
 app.use('/projects', projectsRouter)
 app.use('/references', referencesRouter)
-app.use('/catalog', catalogRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

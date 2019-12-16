@@ -9,9 +9,6 @@ const project_schema = new Schema({
     link: {
         type: String,
         required: true
-    },
-    screenshot: {
-        type: String,
     }
 });
 
